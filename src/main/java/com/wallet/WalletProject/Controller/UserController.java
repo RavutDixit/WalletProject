@@ -117,7 +117,7 @@ public class UserController {
 	    
 		user.setWallet(wallet);
 	
-//		wallet.setWalletBalance(0);
+		wallet.setWalletBalance(0);
 //		wallet.setStatus(1);
 		
 		service.save(user);
@@ -160,7 +160,7 @@ public class UserController {
 		
 		user.setWallet(wallet);
 	
-//		wallet.setWalletBalance(0);
+		wallet.setWalletBalance(0);
 //		wallet.setStatus(1);
 		
 		service.save(user);
@@ -284,6 +284,7 @@ public class UserController {
 			throws UserNotFoundException, WalletNotFoundException, NullPointerException
 
 	{
+		
 		Integer a = wallet.getWalletBalance();
 		User currentUser = service.getCurrentUser();
 		// System.out.println(currentUser);

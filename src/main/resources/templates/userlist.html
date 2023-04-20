@@ -15,7 +15,7 @@
     <th>Last Name</th>
     <th>Username</th>
     <th>Email</th>
-    <th>Password</th>
+   <!-- <th>Password</th>-->
     <th sec:authorize="hasAuthority('ADMIN')">Status</th>
     <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
     </tr>
@@ -27,7 +27,7 @@
     <td th:text="${user.lastName}">Last Name</td>
     <td th:text="${user.username}">Username</td>
     <td th:text="${user.email}">Email</td>
-    <td th:text="${user.password}">Password</td>
+   <!--   <td th:text="${user.password}">Password</td>-->
     <td sec:authorize="hasAuthority('ADMIN')" th:text="${user.status}">Status</td>
     <td sec:authorize="hasAuthority('ADMIN')">
           <a th:href="@{'/edit/' + ${user.id}}">Edit</a>
