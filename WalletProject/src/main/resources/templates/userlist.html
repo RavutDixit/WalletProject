@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Online Wallet Project</title>
+</head>
+<body>
+<div align="center">
+    <table border="1" cellpadding="10" >
+    <thead>
+    <tr>
+    <th>User ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th sec:authorize="hasAuthority('ADMIN')">Status</th>
+    <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${listUsers}">
+    <td th:text="${user.id}">User ID</td>
+    <td th:text="${user.firstName}">First Name</td>
+    <td th:text="${user.lastName}">Last Name</td>
+    <td th:text="${user.username}">Username</td>
+    <td th:text="${user.email}">Email</td>
+    <td th:text="${user.password}">Password</td>
+    <td sec:authorize="hasAuthority('ADMIN')" th:text="${user.status}">Status</td>
+    <td sec:authorize="hasAuthority('ADMIN')">
+          <a th:href="@{'/edit/' + ${user.id}}">Edit</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/delete/' + ${user.id}}">Delete</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/transaction/' + ${user.id}}">Transaction History</a>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="col-sm-12" align="center">
+    <a href="/index">Back To Home Page</a>
+     </div>
+     
+</body>
+</html>

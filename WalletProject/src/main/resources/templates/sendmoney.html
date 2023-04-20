@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Send money to wallet</title>
+</head>
+<body>
+<h1>Send Money to Wallet</h1>
+<div align="center">
+       <!-- success message -->
+                <div th:if="${param.success}">
+                    <div class="alert alert-info" ><b><h3>Money Sent Successfully
+                        </h3></b> </div>
+                </div>
+                <div th:if="${param.error}">
+                    <div class="alert alert-info" ><b><h3>Not Enough Balance
+                        </h3></b> </div>
+                </div>
+<div class="container">
+  <table width="100%" height="100%" border="0" cellpadding="0" align="center">
+            <tr>
+                <td align="center" valign="middle">
+                <table class="table-bordered"  >
+        
+        <form action="#" th:action="@{/sendamount}" th:object="${wallet}" method="post">
+                       <tr>
+                     <td height="25" colspan="2" align="left"   bgcolor="white" >
+                       <div align="center">
+                          <h2> <strong>Send Money</strong></h2>
+                           </div>
+                          </td>
+                      </tr>
+							<tr>
+								<td>To WalletId</td>
+								<td><input type="text" th:field="*{walletId}"
+									class="form-control" /></td>
+							</tr>
+							<tr>
+                <td>Amount</td>
+                <td>            
+                <input type="text" th:field="*{walletBalance}" class="form-control" />
+                </td>
+            </tr>
+            
+            <tr>
+            <td colspan="2"><button type="submit" class="btn btn-info" align="right">Send</button> </td>
+             </tr>    
+    </form>
+       </table>  
+         </td>  
+         </tr>  
+      </table>
+     </div>
+      </div>  
+     <div class="col-sm-12" align="center">
+     <h5><a th:href="@{'/wallet/' + ${#authentication.getPrincipal().getId()}}">Back To Wallet</a></h5>
+     </div>
+</body>
+</html>

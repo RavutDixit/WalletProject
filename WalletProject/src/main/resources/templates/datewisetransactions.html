@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DateWise Transaction History</title>
+</head>
+<body>
+<form action="#" th:action="@{/transactions/export}" th:object="${date}" method="get" >
+<div align="center" style="font-size:30px;margin-top:200px">
+<label>
+From Date:
+</label>
+<input style="font-size: 2rem" type="date" th:field="*{fromDate}">
+</div>
+<div align="center" style="font-size:30px">
+<label>
+To Date:
+</label>
+<input style="font-size: 2rem;margin-top:25px" type="date" th:field="*{toDate}">
+</div>
+<button  type="submit" class="btn btn-info" align="center">Export to Excel</button>
+</form>
+ </div>  
+     <div class="col-sm-12" align="center">
+     <h5><a th:href="@{'/wallet/' + ${#authentication.getPrincipal().getId()}}">Back To Wallet</a></h5>
+     </div>
+</body>
+</html>

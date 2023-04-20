@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+</head>
+<body>
+<div align="center">
+       <!-- success message -->
+                <div th:if="${param.success}">
+                    <div class="alert alert-info" ><b><h3>User Registered Successfully
+                        </h3></b> </div>
+                </div>
+       <div align="center">
+          <h1>Register</h1>
+          <br/>
+          <form action="#" th:action="@{/saveregister}" th:object="${user}" method="post">
+             <table border="0" cellpadding="10">
+                 <tr>
+                       <td>FirstName:</td>
+                       <td><input type="text" th:field="*{firstName}"  required/></td>
+                 </tr>
+                 <tr>
+                       <td>LastName:</td>
+                       <td><input type="text" th:field="*{lastName}" required /></td>
+                 </tr>
+                 <tr>
+                       <td>Username:</td>
+                       <td><input type="text" th:field="*{username}" required /></td>
+                 </tr>
+                 <tr>
+                       <td>Email:</td>
+                       <td><input type="text" th:field="*{email}" required /></td>
+                 </tr>
+                 <tr>
+                       <td>Password:</td>
+                       <td><input type="password" th:field="*{password}" required /></td>
+                 </tr>
+                 <tr>
+                 <td colspan="2"><button type="submit">Register</button></td>
+                 </tr>
+             </table>
+           </form>
+
+       </div>
+         </div>  
+    <div class="col-sm-12" align="center">
+     <h5><a th:href="login">Login Here</a></h5>
+     </div>
+</body>
+</html>

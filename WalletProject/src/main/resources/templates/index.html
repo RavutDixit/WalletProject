@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Online Wallet Project</title>
+</head>
+<body>
+<div align="center">
+
+<div sec:authorize="isAuthenticated()" style="font-size:30px">
+       Welcome <b><span sec:authentication="name">Username</span></b>
+       &nbsp;
+       <span sec:authentication="principal.authorities">Roles</span>
+       <form th:action="@{/logout}" method="post">
+       <input type="submit" value="Logout" />
+       </form>
+</div>
+    <h1>Online Wallet Project</h1>
+  <p style="font-size:40px">  <a sec:authorize="hasAuthority('ADMIN')" href="new">Create New User</a>
+  </p>
+    <br/><br/>
+   <!--  <table border="1" cellpadding="10" >
+    <thead>
+    <tr>
+    <th>User ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th sec:authorize="hasAuthority('ADMIN')">Status</th>
+    <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${listUsers}">
+    <td th:text="${user.id}">User ID</td>
+    <td th:text="${user.firstName}">First Name</td>
+    <td th:text="${user.lastName}">Last Name</td>
+    <td th:text="${user.username}">Username</td>
+    <td th:text="${user.email}">Email</td>
+    <td th:text="${user.password}">Password</td>
+    <td sec:authorize="hasAuthority('ADMIN')" th:text="${user.status}">Status</td>
+    <td sec:authorize="hasAuthority('ADMIN')">
+          <a th:href="@{'/edit/' + ${user.id}}">Edit</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/delete/' + ${user.id}}">Delete</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/transaction/' + ${user.id}}">Transaction History</a>
+    </td>
+    </tr>
+    </tbody>
+    </table> -->
+    <p style="font-size:30px">
+    <a href="/userlist">Userlist</a>
+    </p>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <p style="font-size:30px"> <a th:href="@{'/wallet/' + ${#authentication.getPrincipal().getId()}}">Wallet</a>
+   </p>
+</div>
+
+</body>
+</html>

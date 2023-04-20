@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Wallet</title>
+</head>
+<body>
+<div>
+<h1>Wallet</h1>
+<table border="1" cellpadding="10" >
+<thead>
+<tr>
+<th>Wallet Balance</th>
+<td th:text="${walletBalance}">Wallet Balance</td>
+</tr>
+</thead>
+</table>
+
+<a th:href="@{'/addmoney/' + ${#authentication.getPrincipal().getId()}}">Add Money</a>
+&nbsp;&nbsp;&nbsp;
+<a th:href="@{'/withdrawmoney/' + ${#authentication.getPrincipal().getId()}}">Withdraw Money</a>
+&nbsp;&nbsp;&nbsp;
+<a href="/sendmoney">Send Money</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a th:href="@{'/transaction/' + ${#authentication.getPrincipal().getId()}}">Transaction History</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/datewisetransactions">DateWise Transaction History</a>
+
+</div>
+<div class="col-sm-12" align="center">
+    <a href="/index">Back To Home Page</a>
+     </div>
+</body>
+</html>
